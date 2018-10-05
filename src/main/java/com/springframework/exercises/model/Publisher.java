@@ -10,8 +10,6 @@ public class Publisher {
     private String firstName;
     private String lastName;
     private String address;
-    @OneToOne
-    private Book book;
 
     public Publisher() {
     }
@@ -20,13 +18,6 @@ public class Publisher {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-    }
-
-    public Publisher(String firstName, String lastName, String address, Book book) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.book = book;
     }
 
     public Long getID() {
@@ -61,13 +52,6 @@ public class Publisher {
         this.address = address;
     }
 
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -91,7 +75,6 @@ public class Publisher {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", address='" + address + '\'' +
-                ", book=" + book +
                 '}';
     }
 }

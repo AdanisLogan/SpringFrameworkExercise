@@ -18,9 +18,10 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     private BookRepository bookRepository;
     private PublisherRepository publisherRepository;
 
-    public DevBootstrap(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public DevBootstrap(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
@@ -34,7 +35,6 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         Author eric = new Author("Eric","Evans");
         Book ddd = new Book("Domain Driven Design","1234");
         Publisher harper = new Publisher("Harper","Collins","Tomka 12, Warszawa");
-        harper.setBook(ddd);
         publisherRepository.save(harper);
         ddd.setPublisher(harper);
         ddd.getAuthors().add(eric);
@@ -50,7 +50,6 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         Author rod = new Author("Rod", "Johnson");
         Book noEJB = new Book("J2EE Development without EJB", "23444");
         Publisher worx = new Publisher("John", "Worx","312 Tymiana, Wyrwigory");
-        worx.setBook(noEJB);
         publisherRepository.save(worx);
         noEJB.setPublisher(worx);
         rod.getBooks().add(noEJB);
